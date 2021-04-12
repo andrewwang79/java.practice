@@ -10,5 +10,5 @@
 * https://www.liaoxuefeng.com/wiki/1252599548343744/1282386381766689
 
 ### Swagger
-* https://www.cnblogs.com/progor/p/13297904.html
-* http://localhost:8080/swagger-ui.html
+* https://juejin.cn/post/6844903991793418248
+* http://localhost:8080/swagger-ui/index.html
