@@ -1,4 +1,4 @@
-package cn.wangyaqi.java.practice.misc.poco;
+package cn.wangyaqi.java.practice.misc.entity;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

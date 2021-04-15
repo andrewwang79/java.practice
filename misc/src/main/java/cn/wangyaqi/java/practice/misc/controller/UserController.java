@@ -1,6 +1,6 @@
 package cn.wangyaqi.java.practice.misc.controller;
 
-import cn.wangyaqi.java.practice.misc.poco.User;
+import cn.wangyaqi.java.practice.misc.entity.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

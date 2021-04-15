@@ -15,3 +15,7 @@ Java最佳实践
 ### Swagger
 * https://juejin.cn/post/6844903991793418248
 * http://localhost:8080/swagger-ui/index.html
+
+## database
+### JPA
+* https://cloud.tencent.com/developer/article/1685970
