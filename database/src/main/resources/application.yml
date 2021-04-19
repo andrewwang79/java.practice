@@ -5,10 +5,10 @@ spring:
     max-threads: 5000
     max-connections: 20000
   datasource:
-    url: jdbc:mysql://47.99.132.168:18001/practice?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&useSSL=false
+    url: jdbc:mysql://47.99.132.168:18009/practice?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&useSSL=false
     username: root
-    password: jRtHsGTbqJc5C8Ye
-    driverClassName: com.mysql.jdbc.Driver
+    password: jjjHsGTbqJc5C123
+    driverClassName: com.mysql.cj.jdbc.Driver
     max-active: 1000
     test-on-borrow: true
     test-on-return: true
@@ -24,5 +24,7 @@ spring:
       naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy # Naming strategy
     properties:
       hibernate:
-        dialect: io.qiya.taihang.framework.config.LocalMySQL5Dialect  # stripped before adding them to the entity manager
         format_sql: true
+  mybatis-plus:
+    configuration:
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

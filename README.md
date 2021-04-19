@@ -19,3 +19,7 @@ Java最佳实践
 ## database
 ### JPA
 * https://cloud.tencent.com/developer/article/1685970
+### MyBatis
+* https://www.jianshu.com/p/8556c8468241
+* https://mp.baomidou.com/guide/quick-start.html
+* https://www.cnblogs.com/l-y-h/p/12859477.html

@@ -10,11 +10,12 @@ import javax.annotation.Resource;
 
 @RestController
 @RequestMapping(method = RequestMethod.GET)
-public class UserController {
+public class JpaUserController {
 
     @Resource
     private UserDao userDao;
 
+    // http://127.0.0.1:9050/jpa/all
     @RequestMapping("/jpa/all")
     public Object jpa_all() {
         long count = userDao.count();
@@ -22,7 +23,8 @@ public class UserController {
         return userDao.findAll();
     }
 
-    @RequestMapping("/jpa/findByName")
+    // http://127.0.0.1:9050/jpa/findByName/zhangsan
+    @RequestMapping("/jpa/findByName/{name}")
     public Object jpa_findByName(@PathVariable String name) {
         return userDao.findByName(name);
     }
