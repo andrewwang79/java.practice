@@ -19,6 +19,7 @@
         <module>autotest</module>
         <module>misc</module>
         <module>database</module>
+        <module>code.generator</module>
     </modules>
 
     <properties>

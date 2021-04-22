@@ -1,4 +1,4 @@
-package cn.wangyaqi.java.practice.database.support;
+package cn.wangyaqi.java.practice.code.generator;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
