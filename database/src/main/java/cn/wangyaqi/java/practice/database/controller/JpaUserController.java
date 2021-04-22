@@ -9,23 +9,23 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 @RestController
-@RequestMapping(method = RequestMethod.GET)
+@RequestMapping(path="/jpauser", method = RequestMethod.GET)
 public class JpaUserController {
 
     @Resource
     private UserDao userDao;
 
-    // http://127.0.0.1:9050/jpa/all
-    @RequestMapping("/jpa/all")
-    public Object jpa_all() {
+    // http://127.0.0.1:9050/jpauser/all
+    @RequestMapping("/all")
+    public Object all() {
         long count = userDao.count();
         System.out.println("count=" + count);
         return userDao.findAll();
     }
 
-    // http://127.0.0.1:9050/jpa/findByName/zhangsan
-    @RequestMapping("/jpa/findByName/{name}")
-    public Object jpa_findByName(@PathVariable String name) {
+    // http://127.0.0.1:9050/jpauser/findByName/zhangsan
+    @RequestMapping("/findByName/{name}")
+    public Object findByName(@PathVariable String name) {
         return userDao.findByName(name);
     }
 }
