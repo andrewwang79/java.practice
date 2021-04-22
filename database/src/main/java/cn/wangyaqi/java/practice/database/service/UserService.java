@@ -18,5 +18,5 @@ public interface UserService extends IService<User> {
 
     List<User> findAllByName_m(String name);
 
-    int updatePhoneByName_lambda(String phone, String name);
+    boolean updatePhoneByName_lambda(String phone, String name);
 }

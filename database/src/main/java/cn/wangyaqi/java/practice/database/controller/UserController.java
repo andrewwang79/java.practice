@@ -37,7 +37,6 @@ public class UserController {
     }
 
     // http://127.0.0.1:9050/user/findAllByName/m/zhangsan
-    // TODO : 无效
     @RequestMapping("/findAllByName/m/{name}")
     public Object findAllByName_m(@PathVariable String name) {
         return userService.findAllByName_m(name);

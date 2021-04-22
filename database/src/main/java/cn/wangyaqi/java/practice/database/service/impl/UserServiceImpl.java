@@ -31,10 +31,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return userMapper.findAllByName(name);
     }
 
-    public int updatePhoneByName_lambda(String phone, String name) {
+    public boolean updatePhoneByName_lambda(String phone, String name) {
         // TODO : 更新没有时间
-        return userMapper.update(new User(), Wrappers.<User>lambdaUpdate().set(User::getPhone, phone).eq(User::getName, name));
-//        return lambdaUpdate().eq(User::getName, name).set(User::getPhone, phone).update();
-        // return update(new User(), lambdaUpdate().eq(User::getName, name).set(User::getPhone, phone));
+        // return userMapper.update(new User(), Wrappers.<User>lambdaUpdate().eq(User::getName, name).set(User::getPhone, phone));
+        return update(new User(), Wrappers.<User>lambdaUpdate().eq(User::getName, name).set(User::getPhone, phone));
     }
 }

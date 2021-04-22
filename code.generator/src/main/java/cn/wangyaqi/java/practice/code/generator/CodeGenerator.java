@@ -2,12 +2,16 @@ package cn.wangyaqi.java.practice.code.generator;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
+import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
+import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class CodeGenerator {
@@ -60,7 +64,7 @@ public class CodeGenerator {
         gc.setBaseColumnList(true);
         gc.setFileOverride(true);
         gc.setSwagger2(false);
-        gc.setEnableCache(true);
+        gc.setEnableCache(false);
         gc.setIdType(IdType.AUTO);
         ag.setGlobalConfig(gc);
 
@@ -92,20 +96,20 @@ public class CodeGenerator {
         ag.setPackageInfo(pc);
 
 //        // 如果模板引擎是 velocity
-//        String templatePath = "/templates/mapper.xml.vm";
-//
-//        // 自定义输出配置
-//        List<FileOutConfig> focList = new ArrayList<>();
-//        // 自定义配置会被优先输出
-//        focList.add(new FileOutConfig(templatePath) {
-//            @Override
-//            public String outputFile(TableInfo tableInfo) {
-//                // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-//                return String.format("%s/%s/%s/%sMapper%s", projectPath, pc.getModuleName(), "/src/main/resources/mapper/", tableInfo.getEntityName(), StringPool.DOT_XML);
-//            }
-//        });
-//        cfg.setFileOutConfigList(focList);
-//        mpg.setCfg(cfg);
+        String templatePath = "/templates/mapper.xml.vm";
+
+        // 自定义输出配置
+        List<FileOutConfig> focList = new ArrayList<>();
+        // 自定义配置会被优先输出
+        focList.add(new FileOutConfig(templatePath) {
+            @Override
+            public String outputFile(TableInfo tableInfo) {
+                // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
+                return String.format("%s/%s/%s/%sMapper%s", projectPath, pc.getModuleName(), "/src/main/resources/mapper/", tableInfo.getEntityName(), StringPool.DOT_XML);
+            }
+        });
+        cfg.setFileOutConfigList(focList);
+        ag.setCfg(cfg);
 
         // 配置模板
         TemplateConfig templateConfig = new TemplateConfig();
