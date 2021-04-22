@@ -8,30 +8,25 @@ import java.io.Serializable;
 
 /**
  * 
- * @TableName user
+ * @TableName dog
  */
-@TableName(value ="user")
-public class User implements Serializable {
+@TableName(value ="dog")
+public class Dog implements Serializable {
     /**
      * 
      */
-    @TableId(type = IdType.AUTO)
+    @TableId
     private Integer id;
 
     /**
      * 
      */
+    private String email;
+
+    /**
+     * 
+     */
     private String name;
-
-    /**
-     * 
-     */
-    private String password;
-
-    /**
-     * 
-     */
-    private String phone;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
@@ -53,6 +48,20 @@ public class User implements Serializable {
     /**
      * 
      */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * 
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * 
+     */
     public String getName() {
         return name;
     }
@@ -62,34 +71,6 @@ public class User implements Serializable {
      */
     public void setName(String name) {
         this.name = name;
-    }
-
-    /**
-     * 
-     */
-    public String getPassword() {
-        return password;
-    }
-
-    /**
-     * 
-     */
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    /**
-     * 
-     */
-    public String getPhone() {
-        return phone;
-    }
-
-    /**
-     * 
-     */
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 
     @Override
@@ -103,11 +84,10 @@ public class User implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        User other = (User) that;
+        Dog other = (Dog) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
-            && (this.getPassword() == null ? other.getPassword() == null : this.getPassword().equals(other.getPassword()))
-            && (this.getPhone() == null ? other.getPhone() == null : this.getPhone().equals(other.getPhone()));
+            && (this.getEmail() == null ? other.getEmail() == null : this.getEmail().equals(other.getEmail()))
+            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()));
     }
 
     @Override
@@ -115,9 +95,8 @@ public class User implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
+        result = prime * result + ((getEmail() == null) ? 0 : getEmail().hashCode());
         result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
-        result = prime * result + ((getPassword() == null) ? 0 : getPassword().hashCode());
-        result = prime * result + ((getPhone() == null) ? 0 : getPhone().hashCode());
         return result;
     }
 
@@ -128,9 +107,8 @@ public class User implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
+        sb.append(", email=").append(email);
         sb.append(", name=").append(name);
-        sb.append(", password=").append(password);
-        sb.append(", phone=").append(phone);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

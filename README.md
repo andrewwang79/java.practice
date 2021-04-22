@@ -28,5 +28,6 @@ Java最佳实践
 * [使用示例](https://www.cnblogs.com/l-y-h/p/12859477.html)
 #### 代码生成
 * [插件代码生成器【推荐】](https://mp.baomidou.com/guide/mybatisx-idea-plugin.html) ，生成代码
+![](./s/codegenerator.png)
 * [自定义代码生成器](https://mp.baomidou.com/guide/generator.html)
 * [自定义代码生成器](https://juejin.cn/post/6844904190683119629)

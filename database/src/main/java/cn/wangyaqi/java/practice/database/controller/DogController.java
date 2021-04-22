@@ -1,7 +1,7 @@
 package cn.wangyaqi.java.practice.database.controller;
 
-import cn.wangyaqi.java.practice.database.entity.User;
-import cn.wangyaqi.java.practice.database.service.UserService;
+import cn.wangyaqi.java.practice.database.entity.Dog;
+import cn.wangyaqi.java.practice.database.service.DogService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,21 +13,21 @@ import java.util.List;
 
 @RestController
 @RequestMapping(method = RequestMethod.GET)
-public class BatisUserController {
+public class DogController {
 
     @Autowired
-    private UserService userService;
+    private DogService dogService;
 
-    // http://127.0.0.1:9050/batis/all
-    @RequestMapping("/batis/all")
+    // http://127.0.0.1:9050/dog/all
+    @RequestMapping("/dog/all")
     public Object jpa_all() {
-        return userService.list(null);
+        return dogService.list();
     }
 
-    // http://127.0.0.1:9050/batis/findByName/zhangsan
-    @RequestMapping("/batis/findByName/{name}")
+    // http://127.0.0.1:9050/dog/findByName/zhangsan
+    @RequestMapping("/dog/findByName/{name}")
     public Object batis_findByName(@PathVariable String name) {
-        List<User> list = userService.list(new QueryWrapper<User>().lambda().eq(User::getName, name));
+        List<Dog> list = dogService.list(new QueryWrapper<Dog>().lambda().eq(Dog::getName, name));
         return list;
     }
 }

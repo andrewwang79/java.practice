@@ -1,4 +1,4 @@
-package cn.wangyaqi.java.practice.database;
+package cn.wangyaqi.java.practice.database.support;
 
 import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
