@@ -32,8 +32,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     public boolean updatePhoneByName_lambda(String phone, String name) {
-        // TODO : 更新没有时间
-        // return userMapper.update(new User(), Wrappers.<User>lambdaUpdate().eq(User::getName, name).set(User::getPhone, phone));
         return update(new User(), Wrappers.<User>lambdaUpdate().eq(User::getName, name).set(User::getPhone, phone));
     }
 }

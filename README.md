@@ -36,3 +36,14 @@
 ![](./s/codegenerator.png)
 ### 代码生成SQL函数
 * https://mp.baomidou.com/guide/mybatisx-idea-plugin.html，生成查询等
+### 代码写法
+```
+entity的创建时间和更新时间
+@JsonFormat(pattern = DateUtil.DateTimeFormat)
+@TableField(value = "create_time", fill = FieldFill.INSERT)
+private LocalDateTime createTime;
+
+@JsonFormat(pattern = DateUtil.DateTimeFormat)
+@TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
+private LocalDateTime updateTime;
+```
