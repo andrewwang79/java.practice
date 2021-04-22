@@ -1,6 +1,6 @@
 package cn.wangyaqi.java.practice.database.controller;
 
-import cn.wangyaqi.java.practice.database.domain.User;
+import cn.wangyaqi.java.practice.database.entity.User;
 import cn.wangyaqi.java.practice.database.mapper.UserMapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @RestController

@@ -6,9 +6,13 @@ spring:
     max-connections: 20000
   datasource:
     url: jdbc:mysql://47.99.132.168:18009/practice?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: jjjHsGTbqJc5C123
-    driverClassName: com.mysql.cj.jdbc.Driver
+    # url: jdbc:dm://47.99.132.168:3306/practice?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&useSSL=false
+    # driver-class-name: dm.jdbc.driver.DmDriver
+    # username: root
+    # password: 123456
     max-active: 1000
     test-on-borrow: true
     test-on-return: true

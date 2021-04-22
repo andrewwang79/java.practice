@@ -1,6 +1,6 @@
 package cn.wangyaqi.java.practice.database.dao;
 
-import cn.wangyaqi.java.practice.database.entity.User;
+import cn.wangyaqi.java.practice.database.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
