@@ -10,12 +10,12 @@
         <result column="phone" property="phone" />
         <result column="create_time" property="createTime" />
         <result column="update_time" property="updateTime" />
-        <result column="delete_flag" property="deleteFlag" />
+        <result column="deleted" property="deleted" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, name, password, phone, create_time, update_time, delete_flag
+        id, name, password, phone, create_time, update_time, deleted
     </sql>
     <select id="findAllByName" resultMap="BaseResultMap">
         select

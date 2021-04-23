@@ -46,7 +46,7 @@ public class CodeGenerator {
 
     public static void main(String[] args) {
         // 代码生成器
-        AutoGenerator ag = new AutoGenerator();
+        AutoGenerator mpcg = new AutoGenerator();
 
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
@@ -59,14 +59,14 @@ public class CodeGenerator {
         gc.setServiceName("%sService");
         gc.setServiceImplName("%sServiceImpl");
         gc.setMapperName("%sMapper");
-        // 设置 resultMap
+        // 设置其他
         gc.setBaseResultMap(true);
         gc.setBaseColumnList(true);
         gc.setFileOverride(true);
         gc.setSwagger2(false);
         gc.setEnableCache(false);
         gc.setIdType(IdType.AUTO);
-        ag.setGlobalConfig(gc);
+        mpcg.setGlobalConfig(gc);
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
@@ -74,15 +74,7 @@ public class CodeGenerator {
         dsc.setDriverName(DbDriverName);
         dsc.setUsername(DbUsername);
         dsc.setPassword(DbPassword);
-        ag.setDataSource(dsc);
-
-        // 自定义配置
-        InjectionConfig cfg = new InjectionConfig() {
-            @Override
-            public void initMap() {
-                // to do nothing
-            }
-        };
+        mpcg.setDataSource(dsc);
 
         // 包配置
         PackageConfig pc = new PackageConfig();
@@ -93,29 +85,34 @@ public class CodeGenerator {
         pc.setService("service");
         pc.setMapper("mapper");
         pc.setEntity("entity");
-        ag.setPackageInfo(pc);
+        mpcg.setPackageInfo(pc);
 
-//        // 如果模板引擎是 velocity
-        String templatePath = "/templates/mapper.xml.vm";
-
-        // 自定义输出配置
+        // 自定义属性注入配置
+        InjectionConfig ic = new InjectionConfig() {
+            @Override
+            public void initMap() {
+                // to do nothing
+            }
+        };
+        // 自定义输出配置，优先输出
         List<FileOutConfig> focList = new ArrayList<>();
-        // 自定义配置会被优先输出
-        focList.add(new FileOutConfig(templatePath) {
+        // 模板引擎是velocity
+        // 原有mapper多了一层目录xml，必须自定义输出文件名
+        focList.add(new FileOutConfig() {
             @Override
             public String outputFile(TableInfo tableInfo) {
-                // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
+                // 自定义输出文件路径，如果Entity设置了前后缀，文件名会跟着发生变化
                 return String.format("%s/%s/%s/%sMapper%s", projectPath, pc.getModuleName(), "/src/main/resources/mapper/", tableInfo.getEntityName(), StringPool.DOT_XML);
             }
         });
-        cfg.setFileOutConfigList(focList);
-        ag.setCfg(cfg);
+        ic.setFileOutConfigList(focList);
+        mpcg.setCfg(ic);
 
-        // 配置模板
+        // 模板配置
         TemplateConfig templateConfig = new TemplateConfig();
-
         templateConfig.setXml(null);
-        ag.setTemplate(templateConfig);
+        templateConfig.setController("templates/controller.java.vm");
+        mpcg.setTemplate(templateConfig);
 
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
@@ -128,7 +125,7 @@ public class CodeGenerator {
         strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
         strategy.setControllerMappingHyphenStyle(true);
         // strategy.setTablePrefix(pc.getModuleName() + "_");
-        ag.setStrategy(strategy);
-        ag.execute();
+        mpcg.setStrategy(strategy);
+        mpcg.execute();
     }
 }

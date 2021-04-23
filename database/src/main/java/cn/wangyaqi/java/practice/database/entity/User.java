@@ -56,7 +56,7 @@ public class User implements Serializable {
      */
     @TableLogic(value = "0", delval = "1")
     @TableField(fill = FieldFill.INSERT)
-    private Boolean deleteFlag;
+    private Boolean deleted;
 
     public Integer getId() {
         return id;
@@ -106,12 +106,12 @@ public class User implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public Boolean getDeleteFlag() {
-        return deleteFlag;
+    public Boolean getDeleted() {
+        return deleted;
     }
 
-    public void setDeleteFlag(Boolean deleteFlag) {
-        this.deleteFlag = deleteFlag;
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
     }
 
     @Override
