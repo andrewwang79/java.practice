@@ -28,14 +28,16 @@
 * [官网](https://mp.baomidou.com/guide/quick-start.html), [所有注解](https://mp.baomidou.com/guide/annotation.html#tablename)
 * [MyBatis与MyBatis-plus的区别](https://www.jianshu.com/p/8556c8468241)
 * [使用示例](https://www.cnblogs.com/l-y-h/p/12859477.html)
+* [官方示例](https://gitee.com/baomidou/mybatis-plus-samples)
+
 ### 代码生成文件
-* 自定义代码生成器【推荐】，CodeGenerator.java，修改参数
-    * [自定义代码生成器](https://mp.baomidou.com/guide/generator.html)
-    * [自定义代码生成器](https://juejin.cn/post/6844904190683119629)
+* [自定义代码生成器【推荐】](https://gitee.com/qiya365/longquan/code.generator) : 参数详见jar包里的示例，[资料1](https://mp.baomidou.com/guide/generator.html), [资料2](https://juejin.cn/post/6844904190683119629)
 * [插件代码生成器](https://mp.baomidou.com/guide/mybatisx-idea-plugin.html) ，生成代码
 ![](./s/codegenerator.png)
+
 ### 代码生成SQL函数
 * https://mp.baomidou.com/guide/mybatisx-idea-plugin.html，生成查询等
+
 ### 代码写法
 ```
 尽量都在service写，不要写mapper，join的没办法
