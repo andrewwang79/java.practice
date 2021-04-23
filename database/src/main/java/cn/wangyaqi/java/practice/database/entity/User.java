@@ -1,10 +1,7 @@
 package cn.wangyaqi.java.practice.database.entity;
 
 import cn.wangyaqi.java.practice.database.base.DateUtil;
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.io.Serializable;
@@ -25,20 +22,41 @@ public class User implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
+    /**
+     * 姓名
+     */
     private String name;
 
+    /**
+     * 密码
+     */
     private String password;
 
+    /**
+     * 电话
+     */
     private String phone;
 
     @JsonFormat(pattern = DateUtil.DateTimeFormat)
     @TableField(value = "create_time", fill = FieldFill.INSERT)
+    /**
+     * 创建时间
+     */
     private LocalDateTime createTime;
 
     @JsonFormat(pattern = DateUtil.DateTimeFormat)
-    @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
+    @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE, update = "now()")
+    /**
+     * 最后修改时间
+     */
     private LocalDateTime updateTime;
 
+    /**
+     * 逻辑删除(未删除0,删除1)
+     */
+    @TableLogic(value = "0", delval = "1")
+    @TableField(fill = FieldFill.INSERT)
+    private Boolean deleteFlag;
 
     public Integer getId() {
         return id;
@@ -86,6 +104,14 @@ public class User implements Serializable {
 
     public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public Boolean getDeleteFlag() {
+        return deleteFlag;
+    }
+
+    public void setDeleteFlag(Boolean deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 
     @Override

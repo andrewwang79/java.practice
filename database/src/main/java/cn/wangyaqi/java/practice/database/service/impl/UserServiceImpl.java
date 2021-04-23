@@ -23,15 +23,25 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Resource
     private UserMapper userMapper;
 
-    public List<User> findAllByName_lambda(String name) {
+    public List<User> findAllByName(String name) {
         return lambdaQuery().eq(User::getName, name).list();
     }
 
-    public List<User> findAllByName_m(String name) {
+    public List<User> findAllByName_mapper(String name) {
         return userMapper.findAllByName(name);
     }
 
-    public boolean updatePhoneByName_lambda(String phone, String name) {
+    public boolean updatePhoneByName(String phone, String name) {
         return update(new User(), Wrappers.<User>lambdaUpdate().eq(User::getName, name).set(User::getPhone, phone));
+    }
+
+    public boolean updatePhoneById(Integer id, String phone) {
+        User user = getById(id);
+        user.setPhone(phone);
+        return updateById(user);
+    }
+
+    public boolean deleteByName(String name) {
+        return remove(Wrappers.<User>lambdaQuery().eq(User::getName, name));
     }
 }

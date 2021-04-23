@@ -38,12 +38,10 @@
 * https://mp.baomidou.com/guide/mybatisx-idea-plugin.html，生成查询等
 ### 代码写法
 ```
-entity的创建时间和更新时间
-@JsonFormat(pattern = DateUtil.DateTimeFormat)
-@TableField(value = "create_time", fill = FieldFill.INSERT)
-private LocalDateTime createTime;
+尽量都在service写，不要写mapper，join的没办法
 
-@JsonFormat(pattern = DateUtil.DateTimeFormat)
-@TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
-private LocalDateTime updateTime;
+# entity
+## 创建时间和更新时间
+updateById()更新时间自动修改：@TableField(update = "now()")
+## 逻辑删除
 ```

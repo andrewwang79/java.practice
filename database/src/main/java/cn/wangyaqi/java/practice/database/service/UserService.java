@@ -14,9 +14,13 @@ import java.util.List;
  * @since 2021-04-22
  */
 public interface UserService extends IService<User> {
-    List<User> findAllByName_lambda(String name);
+    List<User> findAllByName(String name);
 
-    List<User> findAllByName_m(String name);
+    List<User> findAllByName_mapper(String name);
 
-    boolean updatePhoneByName_lambda(String phone, String name);
+    boolean updatePhoneByName(String phone, String name);
+
+    boolean updatePhoneById(Integer id, String phone);
+
+    boolean deleteByName(String name);
 }
