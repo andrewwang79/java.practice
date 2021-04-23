@@ -2,66 +2,59 @@ package ${package.Controller};
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ${package.Entity}.${cfg.ClassName};
-import ${package.Service}.${cfg.ClassName}Service;
-import com.rent.model.AjaxResult;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import ${package.Entity}.${entity};
+import ${package.Service}.${entity}Service;
 
 /**
-* ${cfg.moduleName}Controller
+* ${entity}Controller
 *
 * @author ${author}
-* @date ${cfg.datetime}
+* @date ${cfg.time}
 */
-@Controller
-@RequestMapping("/${cfg.moduleName}/${cfg.className}")
-public class ${cfg.ClassName}Controller extends BaseController
-{
+@RestController
+@RequestMapping(path = "${entity}小写", method = RequestMethod.GET)
+public class ${entity}Controller {
     @Autowired
-    private ${cfg.ClassName}Service ${cfg.className}Service;
+    private ${entity}Service ${entity}Service;
 
     /**
-    * 查询${cfg.className}列表
+    * 查询${entity}列表
     */
-    @GetMapping("/list")
-    public TableDataInfo list(@RequestParam int pageNumber, @RequestParam int pageSize) {
-        Page<${cfg.ClassName}> page = ${cfg.className}Service.select${cfg.ClassName}Page(pageNumber, pageSize);
-        return page;
+    @RequestMapping("list")
+    public ApiOutput list(@RequestParam int pageNumber, @RequestParam int pageSize) {
+        Page<${entity}> page = ${entity}Service.select${entity}Page(pageNumber, pageSize);
+        return new ApiOutput(page);
     }
 
-    /**
-    * 新增保存${cfg.ClassName}
-    */
-    @PostMapping("/add${cfg.ClassName}")
-    public AjaxResult addSave(${cfg.ClassName} ${cfg.ClassName}) {
-        boolean ret = ${cfg.ClassName}Service.save(${cfg.ClassName});
-        return new AjaxResult(ret, ret ? "成功" : "失败");
+    @RequestMapping("create")
+    @ApiOperation("新增${entity}")
+    public ApiOutput create(${entity} obj) {
+        boolean ret = ${entity}Service.save(obj);
+        return new ApiOutput(ret?SUCCESS:FAIL);
     }
 
-    /**
-    * 修改保存${cfg.ClassName}
-    */
-    @PostMapping("/edit")
-    public AjaxResult editSave(${cfg.ClassName} ${cfg.ClassName}) {
-        boolean ret = ${cfg.ClassName}Service.updateById(${cfg.ClassName});
-        return new AjaxResult(ret, ret ? "成功" : "失败");
+    @RequestMapping("read")
+    @ApiOperation("根据ID查询${entity}")
+    public ApiOutput read(Long id) {
+        ${entity} obj = ${entity}Service.getById(id);
+        return new ApiOutput(obj?obj:NOT_EXIST);
     }
 
-    @PostMapping("deleteById")
-    @ApiOperation("根据ID删除${cfg.ClassName}")
-    public AjaxResult<${cfg.ClassName}> deleteById(Long id) {
-        boolean ret = ${cfg.ClassName}Service.removeById(id);
-        return new AjaxResult(true, ret ? "成功" : "失败");
+    @RequestMapping("edit")
+    @ApiOperation("修改${entity}")
+    public ApiOutput edit(${entity} obj) {
+        boolean ret = ${entity}Service.updateById(obj);
+        return new ApiOutput(ret?SUCCESS:FAIL);
     }
 
-    @PostMapping("findById")
-    @ApiOperation("根据ID查询${cfg.ClassName}")
-    public AjaxResult<${cfg.ClassName}> findById(Long id) {
-        ${cfg.ClassName} user = ${cfg.ClassName}Service.getById(id);
-        return new AjaxResult(true, "成功", user);
+    @RequestMapping("delete")
+    @ApiOperation("根据ID删除${entity}")
+    public ApiOutput delete(Long id) {
+        boolean ret = ${entity}Service.removeById(id);
+        return new ApiOutput(ret?SUCCESS:FAIL);
     }
 }
