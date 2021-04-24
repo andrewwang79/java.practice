@@ -17,11 +17,24 @@
     <sql id="Base_Column_List">
         id, name, password, phone, create_time, update_time, deleted
     </sql>
+
     <select id="findAllByName" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from user
         where
         name = #{name,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectUserBriefPage" resultType="cn.wangyaqi.java.practice.database.vo.UserBrief">
+        SELECT id,name,create_time FROM user WHERE name=#{name}
+    </select>
+
+    <select id="getCatDetail" resultType="cn.wangyaqi.java.practice.database.vo.CatDetail">
+        SELECT cat.*, user.name AS userName FROM user, cat WHERE user.id=cat.user_id AND user.name=#{name}
+    </select>
+
+    <select id="selectCatDetailPage" resultType="cn.wangyaqi.java.practice.database.vo.CatDetail">
+        SELECT cat.*, user.name AS userName FROM user, cat WHERE user.id=cat.user_id AND user.create_time>#{createTime}
     </select>
 </mapper>

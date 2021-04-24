@@ -1,6 +1,9 @@
 package cn.wangyaqi.java.practice.database.service;
 
 import cn.wangyaqi.java.practice.database.entity.User;
+import cn.wangyaqi.java.practice.database.vo.UserBrief;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
@@ -23,4 +26,8 @@ public interface UserService extends IService<User> {
     boolean updatePhoneById(Integer id, String phone);
 
     boolean deleteByName(String name);
+
+    IPage<User> selectPage(IPage<User> page, LambdaQueryWrapper<User> wrappers);
+
+    IPage<UserBrief> selectUserBriefPage(IPage<UserBrief> page, String name);
 }

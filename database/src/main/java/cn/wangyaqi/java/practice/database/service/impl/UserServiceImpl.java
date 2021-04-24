@@ -3,6 +3,9 @@ package cn.wangyaqi.java.practice.database.service.impl;
 import cn.wangyaqi.java.practice.database.entity.User;
 import cn.wangyaqi.java.practice.database.mapper.UserMapper;
 import cn.wangyaqi.java.practice.database.service.UserService;
+import cn.wangyaqi.java.practice.database.vo.UserBrief;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
@@ -21,14 +24,14 @@ import java.util.List;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
     @Resource
-    private UserMapper userMapper;
+    private UserMapper mapper;
 
     public List<User> findAllByName(String name) {
         return lambdaQuery().eq(User::getName, name).list();
     }
 
     public List<User> findAllByName_mapper(String name) {
-        return userMapper.findAllByName(name);
+        return mapper.findAllByName(name);
     }
 
     public boolean updatePhoneByName(String phone, String name) {
@@ -43,5 +46,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     public boolean deleteByName(String name) {
         return remove(Wrappers.<User>lambdaQuery().eq(User::getName, name));
+    }
+
+    public IPage<User> selectPage(IPage<User> page, LambdaQueryWrapper<User> wrappers) {
+       return mapper.selectPage(page, wrappers);
+    }
+
+    public IPage<UserBrief> selectUserBriefPage(IPage<UserBrief> page, String name) {
+        return mapper.selectUserBriefPage(page, name);
     }
 }
