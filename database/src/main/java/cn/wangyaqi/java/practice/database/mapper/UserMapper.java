@@ -1,17 +1,15 @@
 package cn.wangyaqi.java.practice.database.mapper;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
-import org.apache.ibatis.annotations.*;
-
+import cn.wangyaqi.java.practice.database.entity.User;
+import cn.wangyaqi.java.practice.database.vo.*;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import org.apache.ibatis.annotations.*;
 
-import cn.wangyaqi.java.practice.database.entity.User;
-import cn.wangyaqi.java.practice.database.vo.UserBrief;
-import cn.wangyaqi.java.practice.database.vo.CatDetail;
+import java.time.LocalDateTime;
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -27,9 +25,10 @@ public interface UserMapper extends BaseMapper<User> {
     IPage<UserBrief> selectUserBriefPage(IPage<UserBrief> page, String name);
 
     @Select("SELECT cat.*, user.name AS userName FROM user, cat WHERE user.id=cat.user_id ${ew.customSqlSegment}")
-    IPage<CateDetail> selectCatDetailPage(IPage<CateDetail> page, LambdaQueryWrapper<User> wrappers);
+    IPage<CatDetail> selectCatDetailPage(IPage<CatDetail> page, LambdaQueryWrapper<CatDetail> wrappers);
 
-    IPage<CateDetail> getCatDetail(String name);
+    @Select("SELECT cat.*, user.name AS userName FROM user, cat WHERE user.id=cat.user_id AND user.name=#{name}")
+    List<CatDetail> getCatDetail(String name);
 
-    IPage<CateDetail> selectCatDetailPage(IPage<CateDetail> page, LocalDateTime createTime);
+    IPage<CatDetail> selectCatDetailPageByCreateTime(IPage<CatDetail> page, LocalDateTime createTime);
 }

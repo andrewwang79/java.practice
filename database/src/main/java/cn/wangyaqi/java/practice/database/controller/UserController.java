@@ -1,16 +1,19 @@
 package cn.wangyaqi.java.practice.database.controller;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.OrderItem;
+import com.baomidou.mybatisplus.core.metadata.*;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import cn.wangyaqi.java.practice.database.entity.User;
 import cn.wangyaqi.java.practice.database.service.UserService;
-import cn.wangyaqi.java.practice.database.vo.UserBrief;
+import cn.wangyaqi.java.practice.database.vo.*;
 
 @RestController
 @RequestMapping(path = "/user", method = RequestMethod.GET)
@@ -92,4 +95,20 @@ public class UserController {
         page.addOrder(OrderItem.desc("update_time"));
         return userService.selectUserBriefPage(page, name);
     }
+
+    // 实体对象+lambdaQuery
+    // http://127.0.0.1:9050/user/page/catdetail/zhangsan
+    @RequestMapping("/page/catdetail/{name}")
+    public Object page_catdetail(@PathVariable String name) {
+        Page<CatDetail> page = new Page<>(1, 5);
+        page.addOrder(OrderItem.desc("create_time"));
+        LambdaQueryWrapper<CatDetail> wrappers = Wrappers.<CatDetail>lambdaQuery().like(CatDetail::getName, name);
+        return userService.selectCatDetailPage(page, wrappers);
+    }
+
+    IPage<CatDetail> (IPage<CatDetail> page, LambdaQueryWrapper<CatDetail> wrappers);
+
+    List<CatDetail> getCatDetail(String name);
+
+    IPage<CatDetail> selectCatDetailPageByCreateTime(IPage<CatDetail> page, LocalDateTime createTime);
 }

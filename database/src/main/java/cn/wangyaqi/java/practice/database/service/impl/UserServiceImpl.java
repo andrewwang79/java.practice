@@ -3,7 +3,7 @@ package cn.wangyaqi.java.practice.database.service.impl;
 import cn.wangyaqi.java.practice.database.entity.User;
 import cn.wangyaqi.java.practice.database.mapper.UserMapper;
 import cn.wangyaqi.java.practice.database.service.UserService;
-import cn.wangyaqi.java.practice.database.vo.UserBrief;
+import cn.wangyaqi.java.practice.database.vo.*;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
@@ -11,6 +11,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -54,5 +55,17 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     public IPage<UserBrief> selectUserBriefPage(IPage<UserBrief> page, String name) {
         return mapper.selectUserBriefPage(page, name);
+    }
+
+    public IPage<CatDetail> selectCatDetailPage(IPage<CatDetail> page, LambdaQueryWrapper<CatDetail> wrappers) {
+        return  mapper.selectCatDetailPage(page, wrappers);
+    }
+
+    public List<CatDetail> getCatDetail(String name) {
+        return mapper.getCatDetail(name);
+    }
+
+    public IPage<CatDetail> selectCatDetailPageByCreateTime(IPage<CatDetail> page, LocalDateTime createTime) {
+        return mapper.selectCatDetailPageByCreateTime(page, createTime);
     }
 }

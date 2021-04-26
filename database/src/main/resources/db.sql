@@ -15,6 +15,7 @@ CREATE TABLE `user`
   DEFAULT CHARSET = utf8;
 
 INSERT INTO `user` (`name`, `password`, `phone`, `create_time`, `update_time`, `deleted`) VALUES ('zhangsan', '123456', '13912345678', now(), now(), 0);
+INSERT INTO `user` (`name`, `password`, `phone`, `create_time`, `update_time`, `deleted`) VALUES ('lisi', '123456', '13912345678', now(), now(), 0);
 
 
 DROP TABLE IF EXISTS `cat`;
@@ -34,3 +35,5 @@ CREATE TABLE `cat`
 
 INSERT INTO `cat` (`user_id`, `name`, `create_time`, `update_time`, `deleted`) VALUES (1, 'zs1', now(), now(), 0);
 INSERT INTO `cat` (`user_id`, `name`, `create_time`, `update_time`, `deleted`) VALUES (1, 'zs2', now(), now(), 0);
+INSERT INTO `cat` (`user_id`, `name`, `create_time`, `update_time`, `deleted`) VALUES (2, 'zs1', now(), now(), 0);
+INSERT INTO `cat` (`user_id`, `name`, `create_time`, `update_time`, `deleted`) VALUES (2, 'ls2', now(), now(), 0);

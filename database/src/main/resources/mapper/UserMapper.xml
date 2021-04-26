@@ -30,11 +30,7 @@
         SELECT id,name,create_time FROM user WHERE name=#{name}
     </select>
 
-    <select id="getCatDetail" resultType="cn.wangyaqi.java.practice.database.vo.CatDetail">
-        SELECT cat.*, user.name AS userName FROM user, cat WHERE user.id=cat.user_id AND user.name=#{name}
-    </select>
-
-    <select id="selectCatDetailPage" resultType="cn.wangyaqi.java.practice.database.vo.CatDetail">
+    <select id="selectCatDetailPageByCreateTime" resultType="cn.wangyaqi.java.practice.database.vo.CatDetail">
         SELECT cat.*, user.name AS userName FROM user, cat WHERE user.id=cat.user_id AND user.create_time>#{createTime}
     </select>
 </mapper>
