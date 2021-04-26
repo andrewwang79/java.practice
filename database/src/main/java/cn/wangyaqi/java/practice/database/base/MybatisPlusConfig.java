@@ -11,16 +11,16 @@ import org.springframework.context.annotation.Configuration;
 @MapperScan("cn.wangyaqi.java.practice.*.mapper*")
 public class MybatisPlusConfig {
 
-    @Bean
-    public MybatisPlusInterceptor mybatisPlusInterceptor() {
-        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
-        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
-        return interceptor;
-    }
+  @Bean
+  public MybatisPlusInterceptor mybatisPlusInterceptor() {
+    MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
+    interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
+    return interceptor;
+  }
 
-    //配置MetaObjectHandler
-    @Bean
-    public ThMetaObjectHandler thMetaObjectHandler() {
-        return new ThMetaObjectHandler();
-    }
+  //配置MetaObjectHandler
+  @Bean
+  public ThMetaObjectHandler thMetaObjectHandler() {
+    return new ThMetaObjectHandler();
+  }
 }

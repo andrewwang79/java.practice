@@ -2,35 +2,41 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.wangyaqi.java.practice.database.mapper.UserMapper">
 
-    <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="cn.wangyaqi.java.practice.database.entity.User">
-        <id column="id" property="id" />
-        <result column="name" property="name" />
-        <result column="password" property="password" />
-        <result column="phone" property="phone" />
-        <result column="create_time" property="createTime" />
-        <result column="update_time" property="updateTime" />
-        <result column="deleted" property="deleted" />
-    </resultMap>
+  <!-- 通用查询映射结果 -->
+  <resultMap id="BaseResultMap" type="cn.wangyaqi.java.practice.database.entity.User">
+    <id column="id" property="id"/>
+    <result column="name" property="name"/>
+    <result column="password" property="password"/>
+    <result column="phone" property="phone"/>
+    <result column="create_time" property="createTime"/>
+    <result column="update_time" property="updateTime"/>
+    <result column="deleted" property="deleted"/>
+  </resultMap>
 
-    <!-- 通用查询结果列 -->
-    <sql id="Base_Column_List">
+  <!-- 通用查询结果列 -->
+  <sql id="Base_Column_List">
         id, name, password, phone, create_time, update_time, deleted
     </sql>
 
-    <select id="findAllByName" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from user
-        where
-        name = #{name,jdbcType=VARCHAR}
-    </select>
+  <select id="findAllByName" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from user
+    where
+    name = #{name,jdbcType=VARCHAR}
+  </select>
 
-    <select id="selectUserBriefPage" resultType="cn.wangyaqi.java.practice.database.vo.UserBrief">
+  <select id="selectUserBriefPage" resultType="cn.wangyaqi.java.practice.database.vo.UserBrief">
         SELECT id,name,create_time FROM user WHERE name=#{name}
     </select>
 
-    <select id="selectCatDetailPageByCreateTime" resultType="cn.wangyaqi.java.practice.database.vo.CatDetail">
-        SELECT cat.*, user.name AS userName FROM user, cat WHERE user.id=cat.user_id AND user.create_time>#{createTime}
-    </select>
+  <select id="selectCatDetailPageSql" resultType="cn.wangyaqi.java.practice.database.vo.CatDetail">
+    SELECT cat.*, user.name AS userName FROM user LEFT JOIN cat on user.id=cat.user_id
+    <where>
+      <if test="userName != null and userName != ''">
+        AND user.name = #{userName}
+      </if>
+      AND cat.create_time>#{createTime}
+    </where>
+  </select>
 </mapper>

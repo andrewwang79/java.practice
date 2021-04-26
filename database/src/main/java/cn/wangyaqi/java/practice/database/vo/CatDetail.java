@@ -1,9 +1,10 @@
 package cn.wangyaqi.java.practice.database.vo;
 
 import cn.wangyaqi.java.practice.database.base.DateUtil;
-import com.baomidou.mybatisplus.annotation.*;
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -17,86 +18,86 @@ import java.time.LocalDateTime;
  */
 public class CatDetail implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-    private Integer id;
+  private Integer id;
 
-    /**
-     * 用户名称
-     */
-    private String userName;
+  /**
+   * 用户名称
+   */
+  private String userName;
 
-    /**
-     * 姓名
-     */
-    private String name;
+  /**
+   * 姓名
+   */
+  private String name;
 
-    @JsonFormat(pattern = DateUtil.DateTimeFormat)
-    @TableField(value = "create_time", fill = FieldFill.INSERT)
-    /**
-     * 创建时间
-     */
-    private LocalDateTime createTime;
+  @JsonFormat(pattern = DateUtil.DateTimeFormat)
+  @TableField(value = "create_time" , fill = FieldFill.INSERT)
+  /**
+   * 创建时间
+   */
+  private LocalDateTime createTime;
 
-    @JsonFormat(pattern = DateUtil.DateTimeFormat)
-    @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE, update = "now()")
-    /**
-     * 最后修改时间
-     */
-    private LocalDateTime updateTime;
+  @JsonFormat(pattern = DateUtil.DateTimeFormat)
+  @TableField(value = "update_time" , fill = FieldFill.INSERT_UPDATE, update = "now()")
+  /**
+   * 最后修改时间
+   */
+  private LocalDateTime updateTime;
 
-    /**
-     * 逻辑删除(未删除0,删除1)
-     */
-    @TableLogic(value = "0", delval = "1")
-    @TableField(fill = FieldFill.INSERT)
-    private Boolean deleted;
+  /**
+   * 逻辑删除(未删除0,删除1)
+   */
+  @TableLogic(value = "0" , delval = "1")
+  @TableField(fill = FieldFill.INSERT)
+  private Boolean deleted;
 
-    public Integer getId() {
-        return id;
-    }
+  public Integer getId() {
+    return id;
+  }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-    public String getUserName() {
-        return userName;
-    }
+  public String getUserName() {
+    return userName;
+  }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+  public void setUserName(String userName) {
+    this.userName = userName;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public LocalDateTime getCreateTime() {
-        return createTime;
-    }
+  public LocalDateTime getCreateTime() {
+    return createTime;
+  }
 
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
+  public void setCreateTime(LocalDateTime createTime) {
+    this.createTime = createTime;
+  }
 
-    public LocalDateTime getUpdateTime() {
-        return updateTime;
-    }
+  public LocalDateTime getUpdateTime() {
+    return updateTime;
+  }
 
-    public void setUpdateTime(LocalDateTime updateTime) {
-        this.updateTime = updateTime;
-    }
+  public void setUpdateTime(LocalDateTime updateTime) {
+    this.updateTime = updateTime;
+  }
 
-    public Boolean getDeleted() {
-        return deleted;
-    }
+  public Boolean getDeleted() {
+    return deleted;
+  }
 
-    public void setDeleted(Boolean deleted) {
-        this.deleted = deleted;
-    }
+  public void setDeleted(Boolean deleted) {
+    this.deleted = deleted;
+  }
 }

@@ -1,11 +1,12 @@
 package cn.wangyaqi.java.practice.database.service;
 
 import cn.wangyaqi.java.practice.database.entity.User;
-import cn.wangyaqi.java.practice.database.vo.*;
+import cn.wangyaqi.java.practice.database.vo.CatDetail;
+import cn.wangyaqi.java.practice.database.vo.UserBrief;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -18,23 +19,24 @@ import java.util.List;
  * @since 2021-04-22
  */
 public interface UserService extends IService<User> {
-    List<User> findAllByName(String name);
 
-    List<User> findAllByName_mapper(String name);
+  List<User> findAllByName(String name);
 
-    boolean updatePhoneByName(String phone, String name);
+  List<User> findAllByName_mapper(String name);
 
-    boolean updatePhoneById(Integer id, String phone);
+  List<CatDetail> findCatDetailList(String userName);
 
-    boolean deleteByName(String name);
+  boolean updatePhoneByName(String phone, String name);
 
-    IPage<User> selectPage(IPage<User> page, LambdaQueryWrapper<User> wrappers);
+  boolean updatePhoneById(Integer id, String phone);
 
-    IPage<UserBrief> selectUserBriefPage(IPage<UserBrief> page, String name);
+  boolean deleteByName(String name);
 
-    IPage<CatDetail> selectCatDetailPage(IPage<CatDetail> page, LambdaQueryWrapper<CatDetail> wrappers);
+  IPage<User> selectPage(IPage<User> page, LambdaQueryWrapper<User> wrappers);
 
-    List<CatDetail> getCatDetail(String name);
+  IPage<UserBrief> selectUserBriefPage(IPage<UserBrief> page, String name);
 
-    IPage<CatDetail> selectCatDetailPageByCreateTime(IPage<CatDetail> page, LocalDateTime createTime);
+  IPage<CatDetail> selectCatDetailPage(Page<CatDetail> page, String name);
+
+  IPage<CatDetail> selectCatDetailPageSql(IPage<CatDetail> page, String userName, LocalDateTime createTime);
 }
