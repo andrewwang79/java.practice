@@ -10,7 +10,6 @@ import com.baomidou.mybatisplus.core.toolkit.Constants;
 import java.time.LocalDateTime;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.ResultType;
 import org.apache.ibatis.annotations.Select;
 
 /**
@@ -25,12 +24,12 @@ public interface UserMapper extends BaseMapper<User> {
 
   List<User> findAllByName(@Param("name") String name);
 
-  @Select("SELECT cat.*, user.name AS userName FROM user, cat WHERE user.id=cat.user_id AND user.name=#{userName}")
+  @Select("SELECT c.*, u.name AS userName FROM user as u, cat as c WHERE u.id=c.user_id AND u.name=#{userName}")
   List<CatDetail> findCatDetailList(String userName);
 
   IPage<UserBrief> selectUserBriefPage(IPage<UserBrief> page, String name);
 
-  @Select("SELECT cat.*, user.name AS userName FROM user LEFT JOIN cat on user.id=cat.user_id ${ew.customSqlSegment}")
+  @Select("SELECT c.*, u.name AS userName FROM user as u LEFT JOIN cat as c on u.id=c.user_id ${ew.customSqlSegment}")
   IPage<CatDetail> selectCatDetailPage(IPage<CatDetail> page, @Param(Constants.WRAPPER) QueryWrapper<CatDetail> wrapper);
 
   IPage<CatDetail> selectCatDetailPageSql(IPage<CatDetail> page, @Param("userName") String userName, @Param("createTime") LocalDateTime createTime);

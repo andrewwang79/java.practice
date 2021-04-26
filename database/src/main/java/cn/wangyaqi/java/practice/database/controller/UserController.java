@@ -77,11 +77,10 @@ public class UserController {
     return true;
   }
 
-  // http://127.0.0.1:9050/user/delete/zhangsan
+  // http://127.0.0.1:9050/user/delete2/zhangsan
   @RequestMapping("/delete2/{name}")
   public Object delete2(@PathVariable String name) {
-    return userService.deleteByName(
-        name); // 等同于userService.remove(Wrappers.<User>lambdaQuery().eq(User::getName, name));
+    return userService.deleteByName(name); // 等同于userService.remove(Wrappers.<User>lambdaQuery().eq(User::getName, name));
   }
 
   // PAGE

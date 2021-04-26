@@ -5,7 +5,7 @@
 | 目录 | 说明 |
 | :-: | - |
 | misc | 杂项集合 |
-| database | 数据库连接 |
+| database | 数据库连接，多租户 |
 | autotest | 自动化测试：接口单元测试，接口集成测试 |
 
 # misc
@@ -29,6 +29,9 @@
 * [MyBatis与MyBatis-plus的区别](https://www.jianshu.com/p/8556c8468241)
 * [使用示例](https://www.cnblogs.com/l-y-h/p/12859477.html)
 * [官方示例](https://gitee.com/baomidou/mybatis-plus-samples)
+
+### 注意事项
+* 多租户的联表查询：每个表要有租户编号，sql里每个表都要给别名
 
 ### 代码生成文件
 * [自定义代码生成器【推荐】](https://gitee.com/qiya365/longquan/code.generator) : 参数详见jar包里的示例，[资料1](https://mp.baomidou.com/guide/generator.html), [资料2](https://juejin.cn/post/6844904190683119629)

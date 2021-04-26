@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`
 (
     `id`          int(11)     NOT NULL AUTO_INCREMENT,
+    `tenant_id`   int(11)     NOT NULL COMMENT '租户编号',
     `name`        varchar(32) NOT NULL COMMENT '姓名',
     `password`    varchar(16) NOT NULL COMMENT '密码',
     `phone`       varchar(11)          DEFAULT NULL COMMENT '电话',
@@ -14,8 +15,8 @@ CREATE TABLE `user`
   AUTO_INCREMENT = 1
   DEFAULT CHARSET = utf8;
 
-INSERT INTO `user` (`name`, `password`, `phone`, `create_time`, `update_time`, `deleted`) VALUES ('zhangsan', '123456', '13912345678', now(), now(), 0);
-INSERT INTO `user` (`name`, `password`, `phone`, `create_time`, `update_time`, `deleted`) VALUES ('lisi', '123456', '13912345678', now(), now(), 0);
+INSERT INTO `user` (`tenant_id`, `name`, `password`, `phone`, `create_time`, `update_time`, `deleted`) VALUES (1, 'zhangsan', '123456', '13912345678', now(), now(), 0);
+INSERT INTO `user` (`tenant_id`, `name`, `password`, `phone`, `create_time`, `update_time`, `deleted`) VALUES (2, 'lisi', '123456', '13912345678', now(), now(), 0);
 
 
 DROP TABLE IF EXISTS `cat`;

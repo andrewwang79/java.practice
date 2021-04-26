@@ -26,9 +26,13 @@ public class Cat implements Serializable {
   private Integer id;
 
   /**
+   * 租户编号
+   */
+  private Long tenantId;
+
+  /**
    * 用户编号
    */
-  @TableId(value = "user_id")
   private Integer userId;
 
   /**
@@ -37,14 +41,14 @@ public class Cat implements Serializable {
   private String name;
 
   @JsonFormat(pattern = DateUtil.DateTimeFormat)
-  @TableField(value = "create_time" , fill = FieldFill.INSERT)
+  @TableField(fill = FieldFill.INSERT)
   /**
    * 创建时间
    */
   private LocalDateTime createTime;
 
   @JsonFormat(pattern = DateUtil.DateTimeFormat)
-  @TableField(value = "update_time" , fill = FieldFill.INSERT_UPDATE, update = "now()")
+  @TableField(fill = FieldFill.INSERT_UPDATE, update = "now()")
   /**
    * 最后修改时间
    */
@@ -63,6 +67,14 @@ public class Cat implements Serializable {
 
   public void setId(Integer id) {
     this.id = id;
+  }
+
+  public Long getTenantId() {
+    return tenantId;
+  }
+
+  public void setTenantId(Long tenantId) {
+    this.tenantId = tenantId;
   }
 
   public Integer getUserId() {

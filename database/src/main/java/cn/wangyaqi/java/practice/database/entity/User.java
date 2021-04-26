@@ -23,6 +23,11 @@ public class User implements Serializable {
   private Integer id;
 
   /**
+   * 租户编号
+   */
+  private Long tenantId;
+
+  /**
    * 姓名
    */
   private String name;
@@ -38,14 +43,14 @@ public class User implements Serializable {
   private String phone;
 
   @JsonFormat(pattern = DateUtil.DateTimeFormat)
-  @TableField(value = "create_time" , fill = FieldFill.INSERT)
+  @TableField(fill = FieldFill.INSERT)
   /**
    * 创建时间
    */
   private LocalDateTime createTime;
 
   @JsonFormat(pattern = DateUtil.DateTimeFormat)
-  @TableField(value = "update_time" , fill = FieldFill.INSERT_UPDATE, update = "now()")
+  @TableField(fill = FieldFill.INSERT_UPDATE, update = "now()")
   /**
    * 最后修改时间
    */
@@ -64,6 +69,14 @@ public class User implements Serializable {
 
   public void setId(Integer id) {
     this.id = id;
+  }
+
+  public Long getTenantId() {
+    return tenantId;
+  }
+
+  public void setTenantId(Long tenantId) {
+    this.tenantId = tenantId;
   }
 
   public String getName() {

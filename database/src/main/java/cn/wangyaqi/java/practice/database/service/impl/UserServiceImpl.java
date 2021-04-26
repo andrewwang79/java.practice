@@ -68,7 +68,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
   public IPage<CatDetail> selectCatDetailPage(Page<CatDetail> page, String name) {
     page.addOrder(OrderItem.desc("create_time"));
     QueryWrapper<CatDetail> wrapper = new QueryWrapper<>();
-    wrapper.eq("user.name" , name);
+    wrapper.eq("u.name" , name);
 
     return mapper.selectCatDetailPage(page, wrapper);
   }
