@@ -1,0 +1,19 @@
+server:
+  port: 9050
+spring:
+  datasource:
+    url: jdbc:dm://192.168.1.8:5236/practice?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&useSSL=false
+    driver-class-name: dm.jdbc.driver.DmDriver
+    dialect: org.hibernate.dialect.DmDialect
+    username: sysdba
+    password: 123456789
+    max-active: 1000
+    test-on-borrow: true
+    test-on-return: true
+    time-between-eviction-runs-millis: 1800000
+    num-tests-per-eviction-run: 3
+    min-evictable-idle-time-millis: 1800000
+    validation-query: SELECT 1
+  mybatis-plus:
+    configuration:
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

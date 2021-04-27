@@ -57,11 +57,6 @@ updateById()更新时间自动修改：@TableField(update = "now()")
 ### 达梦数据库8连接
 * 有效方案：https://my.oschina.net/jeecg/blog/4302268
 ```
-mvn install:install-file -DgroupId=com.dm -DartifactId=DmJdbcDriver18 -Dversion=1.8 -Dpackaging=jar -Dfile=C:\dmdbms\drivers\jdbc\DmJdbcDriver18.jar
-<dependency>
-   <groupId>com.dm</groupId>
-   <artifactId>DmJdbcDriver18</artifactId>
-   <version>1.8</version>
-</dependency>
+mvn install:install-file -DgroupId=com.dm -DartifactId=DmJdbcDriver18 -Dversion=1.8 -Dpackaging=jar -Dfile=./s/DmJdbcDriver18.jar
 ```
 * 无效方案[达梦数据库8 jdbc](https://gitee.com/fuile/dameng/blob/master/repository-%E8%BE%BE%E6%A2%A68maven.zip)
