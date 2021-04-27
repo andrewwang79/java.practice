@@ -22,7 +22,7 @@ public class Cat implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  @TableId(value = "id" , type = IdType.AUTO)
+  @TableId(type = IdType.AUTO)
   private Integer id;
 
   /**
@@ -40,18 +40,18 @@ public class Cat implements Serializable {
    */
   private String name;
 
-  @JsonFormat(pattern = DateUtil.DateTimeFormat)
-  @TableField(fill = FieldFill.INSERT)
   /**
    * 创建时间
    */
+  @JsonFormat(pattern = DateUtil.DateTimeFormat)
+  @TableField(fill = FieldFill.INSERT)
   private LocalDateTime createTime;
 
-  @JsonFormat(pattern = DateUtil.DateTimeFormat)
-  @TableField(fill = FieldFill.INSERT_UPDATE, update = "now()")
   /**
    * 最后修改时间
    */
+  @JsonFormat(pattern = DateUtil.DateTimeFormat)
+  @TableField(fill = FieldFill.INSERT_UPDATE, update = "now()")
   private LocalDateTime updateTime;
 
   /**

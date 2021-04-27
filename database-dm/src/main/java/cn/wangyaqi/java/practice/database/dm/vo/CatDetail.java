@@ -1,6 +1,6 @@
-package cn.wangyaqi.java.practice.database.vo;
+package cn.wangyaqi.java.practice.database.dm.vo;
 
-import cn.wangyaqi.java.practice.database.base.DateUtil;
+import cn.wangyaqi.java.practice.database.dm.base.DateUtil;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -29,16 +29,16 @@ public class CatDetail implements Serializable {
    */
   private String name;
 
-  @JsonFormat(pattern = DateUtil.DateTimeFormat)
   /**
    * 创建时间
    */
+  @JsonFormat(pattern = DateUtil.DateTimeFormat)
   private LocalDateTime createTime;
 
-  @JsonFormat(pattern = DateUtil.DateTimeFormat)
   /**
    * 最后修改时间
    */
+  @JsonFormat(pattern = DateUtil.DateTimeFormat)
   private LocalDateTime updateTime;
 
   /**

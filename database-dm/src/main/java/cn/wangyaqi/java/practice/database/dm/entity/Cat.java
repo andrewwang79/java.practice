@@ -1,6 +1,11 @@
-package cn.wangyaqi.java.practice.database.vo;
+package cn.wangyaqi.java.practice.database.dm.entity;
 
-import cn.wangyaqi.java.practice.database.base.DateUtil;
+import cn.wangyaqi.java.practice.database.dm.base.DateUtil;
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -13,37 +18,42 @@ import java.time.LocalDateTime;
  * @author wangyaqi
  * @since 2021-04-22
  */
-public class CatDetail implements Serializable {
+public class Cat implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
+  @TableId(type = IdType.AUTO)
   private Integer id;
 
   /**
-   * 用户名称
+   * 用户编号
    */
-  private String userName;
+  private Integer userId;
 
   /**
    * 姓名
    */
   private String name;
 
-  @JsonFormat(pattern = DateUtil.DateTimeFormat)
   /**
    * 创建时间
    */
+  @JsonFormat(pattern = DateUtil.DateTimeFormat)
+  @TableField(fill = FieldFill.INSERT)
   private LocalDateTime createTime;
 
-  @JsonFormat(pattern = DateUtil.DateTimeFormat)
   /**
    * 最后修改时间
    */
+  @JsonFormat(pattern = DateUtil.DateTimeFormat)
+  @TableField(fill = FieldFill.INSERT_UPDATE, update = "now()")
   private LocalDateTime updateTime;
 
   /**
    * 逻辑删除(未删除0,删除1)
    */
+  @TableLogic(value = "0" , delval = "1")
+  @TableField(fill = FieldFill.INSERT)
   private Boolean deleted;
 
   public Integer getId() {
@@ -54,12 +64,12 @@ public class CatDetail implements Serializable {
     this.id = id;
   }
 
-  public String getUserName() {
-    return userName;
+  public Integer getUserId() {
+    return userId;
   }
 
-  public void setUserName(String userName) {
-    this.userName = userName;
+  public void setUserId(Integer userId) {
+    this.userId = userId;
   }
 
   public String getName() {

@@ -13,7 +13,6 @@
 
     <properties>
         <mybatisplus.version>3.4.2</mybatisplus.version>
-        <mybatisplusgenerator.version>3.4.1</mybatisplusgenerator.version>
     </properties>
 
     <dependencies>
@@ -28,22 +27,7 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${mybatisplus.version}</version>
         </dependency>
-        <!--MyBatis-Plus code generator-->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-generator</artifactId>
-            <version>${mybatisplusgenerator.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.velocity</groupId>
-            <artifactId>velocity-engine-core</artifactId>
-            <version>2.0</version>
-        </dependency>
 
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
         <!--dm-->
         <dependency>
             <groupId>com.dm</groupId>
@@ -51,5 +35,4 @@
             <version>1.8</version>
         </dependency>
     </dependencies>
-
 </project>

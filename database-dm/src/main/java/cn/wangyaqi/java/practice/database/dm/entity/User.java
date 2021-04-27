@@ -22,7 +22,7 @@ public class User implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  @TableId(value = "id" , type = IdType.AUTO)
+  @TableId(type = IdType.AUTO)
   private Integer id;
 
   /**
@@ -40,18 +40,18 @@ public class User implements Serializable {
    */
   private String phone;
 
-  @JsonFormat(pattern = DateUtil.DateTimeFormat)
-  @TableField(value = "create_time" , fill = FieldFill.INSERT)
   /**
    * 创建时间
    */
+  @JsonFormat(pattern = DateUtil.DateTimeFormat)
+  @TableField(fill = FieldFill.INSERT)
   private LocalDateTime createTime;
 
-  @JsonFormat(pattern = DateUtil.DateTimeFormat)
-  @TableField(value = "update_time" , fill = FieldFill.INSERT_UPDATE, update = "now()")
   /**
    * 最后修改时间
    */
+  @JsonFormat(pattern = DateUtil.DateTimeFormat)
+  @TableField(fill = FieldFill.INSERT_UPDATE, update = "now()")
   private LocalDateTime updateTime;
 
   /**
@@ -115,17 +115,5 @@ public class User implements Serializable {
 
   public void setDeleted(Boolean deleted) {
     this.deleted = deleted;
-  }
-
-  @Override
-  public String toString() {
-    return "User{" +
-        "id=" + id +
-        ", name=" + name +
-        ", password=" + password +
-        ", phone=" + phone +
-        ", createTime=" + createTime +
-        ", updateTime=" + updateTime +
-        "}";
   }
 }

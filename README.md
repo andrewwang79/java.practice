@@ -6,7 +6,7 @@
 | :-: | - |
 | misc | 杂项集合 |
 | database | 数据库连接，多租户 |
-| database-dm | 达梦数据库8+东方通7 |
+| database-dm | 达梦数据库8+东方通7，无租户 |
 | autotest | 自动化测试：接口单元测试，接口集成测试 |
 
 # misc

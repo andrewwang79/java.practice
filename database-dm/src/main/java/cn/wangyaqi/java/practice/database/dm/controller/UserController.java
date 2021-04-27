@@ -2,6 +2,13 @@ package cn.wangyaqi.java.practice.database.dm.controller;
 
 import cn.wangyaqi.java.practice.database.dm.entity.User;
 import cn.wangyaqi.java.practice.database.dm.service.UserService;
+import cn.wangyaqi.java.practice.database.dm.vo.CatDetail;
+import cn.wangyaqi.java.practice.database.dm.vo.UserBrief;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.OrderItem;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,11 +16,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "/user" , method = RequestMethod.GET)
+@RequestMapping(path = "/user", method = RequestMethod.GET)
 public class UserController {
 
   @Autowired
   private UserService userService;
+
+  // INSERT : userService.save()
 
   // ALL
   // http://127.0.0.1:9050/user/allt
@@ -28,8 +37,6 @@ public class UserController {
   public Object all() {
     return userService.list(null);
   }
-
-  // INSERT : userService.save()
 
   // FIND
   // http://127.0.0.1:9050/user/findAllByName/c/zhangsan
@@ -48,6 +55,13 @@ public class UserController {
   @RequestMapping("/findAllByName/m/{name}")
   public Object findAllByName_m(@PathVariable String name) {
     return userService.findAllByName_mapper(name);
+  }
+
+  // 联表查询：符合主表字段条件的子表列表，返回的列表项中有一个字段是主表的
+  // http://127.0.0.1:9050/user/find_catdetail_List/zhangsan
+  @RequestMapping("/find_catdetail_List/{userName}")
+  public Object findCatDetailList(@PathVariable String userName) {
+    return userService.findCatDetailList(userName);
   }
 
   // UPDATE
@@ -75,5 +89,43 @@ public class UserController {
   @RequestMapping("/delete2/{name}")
   public Object delete2(@PathVariable String name) {
     return userService.deleteByName(name); // 等同于userService.remove(Wrappers.<User>lambdaQuery().eq(User::getName, name));
+  }
+
+  // PAGE
+  // 实体对象+LambdaQueryWrapper
+  // http://127.0.0.1:9050/user/page/name/zhangsan
+  @RequestMapping("/page/name/{name}")
+  public Object page_name(@PathVariable String name) {
+    Page<User> page = new Page<>(1, 5);
+    page.addOrder(OrderItem.desc("create_time"));
+    LambdaQueryWrapper<User> wrappers = Wrappers.<User>lambdaQuery().like(User::getName, name);
+    return userService.selectPage(page, wrappers);
+  }
+
+  // 视图子对象+sql
+  // http://127.0.0.1:9050/user/page2/name/zhangsan
+  @RequestMapping("/page2/name/{name}")
+  public Object page2_name(@PathVariable String name) {
+    Page<UserBrief> page = new Page<>(1, 5);
+    page.addOrder(OrderItem.desc("update_time"));
+    return userService.selectUserBriefPage(page, name);
+  }
+
+  // 分页联表查询：QueryWrapper
+  // https://www.codeleading.com/article/21282428947/
+  // http://127.0.0.1:9050/user/page/catdetail/zhangsan
+  @RequestMapping("/page/catdetail/{userName}")
+  public Object page_catdetail(@PathVariable String userName) {
+    Page<CatDetail> page = new Page<>(1, 5);
+    return userService.selectCatDetailPage(page, userName);
+  }
+
+  // 分页联表查询：SQL
+  // http://127.0.0.1:9050/user/page/catdetail_sql/zhangsan
+  @RequestMapping("/page/catdetail_sql/{userName}")
+  public Object page_catdetailSQL(@PathVariable String userName) {
+    Page<CatDetail> page = new Page<>(1, 5);
+    LocalDateTime createTime = LocalDateTime.now().minusDays(100);
+    return userService.selectCatDetailPageSql(page, userName, createTime);
   }
 }
