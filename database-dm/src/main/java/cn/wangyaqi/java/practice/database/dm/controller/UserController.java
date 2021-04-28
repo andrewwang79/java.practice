@@ -90,7 +90,7 @@ public class UserController {
   @RequestMapping("/page/name/{name}")
   public Object page_name(@PathVariable String name) {
     Page<User> page = new Page<>(1, 5);
-    page.addOrder(OrderItem.desc("create_time"));
+    page.addOrder(OrderItem.desc("CREATE_TIME"));
     LambdaQueryWrapper<User> wrappers = Wrappers.<User>lambdaQuery().like(User::getName, name);
     return userService.selectPage(page, wrappers);
   }
@@ -100,7 +100,7 @@ public class UserController {
   @RequestMapping("/page2/name/{name}")
   public Object page2_name(@PathVariable String name) {
     Page<UserBrief> page = new Page<>(1, 5);
-    page.addOrder(OrderItem.desc("update_time"));
+    page.addOrder(OrderItem.desc("UPDATE_TIME"));
     return userService.selectUserBriefPage(page, name);
   }
 

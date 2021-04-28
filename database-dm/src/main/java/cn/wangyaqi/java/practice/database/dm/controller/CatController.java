@@ -40,7 +40,7 @@ public class CatController {
   @RequestMapping("/page/name/{name}")
   public Object page_name(@PathVariable String name) {
     Page<Cat> page = new Page<>(1, 5);
-    page.addOrder(OrderItem.desc("create_time"));
+    page.addOrder(OrderItem.desc("CREATE_TIME"));
     LambdaQueryWrapper<Cat> wrappers = Wrappers.<Cat>lambdaQuery().like(Cat::getName, name);
     return catService.selectPage(page, wrappers);
   }
