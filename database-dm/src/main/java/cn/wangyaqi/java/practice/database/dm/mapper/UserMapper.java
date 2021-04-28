@@ -22,16 +22,14 @@ import org.apache.ibatis.annotations.Select;
  */
 public interface UserMapper extends BaseMapper<User> {
 
-  List<User> findAllt();
-
   List<User> findAllByName(@Param("name") String name);
 
-  @Select("SELECT c.*, u.name AS userName FROM user as u, cat as c WHERE u.id=c.user_id AND u.name=#{userName}")
+  @Select("SELECT c.*, u.NAME AS userName FROM USER as u, CAT as c WHERE u.ID=c.user_id AND u.NAME=#{userName}")
   List<CatDetail> findCatDetailList(String userName);
 
   IPage<UserBrief> selectUserBriefPage(IPage<UserBrief> page, String name);
 
-  @Select("SELECT c.*, u.name AS userName FROM user as u LEFT JOIN cat as c on u.id=c.user_id ${ew.customSqlSegment}")
+  @Select("SELECT c.*, u.NAME AS userName FROM USER as u LEFT JOIN CAT as c on u.ID=c.USER_ID ${ew.customSqlSegment}")
   IPage<CatDetail> selectCatDetailPage(IPage<CatDetail> page, @Param(Constants.WRAPPER) QueryWrapper<CatDetail> wrapper);
 
   IPage<CatDetail> selectCatDetailPageSql(IPage<CatDetail> page, @Param("userName") String userName, @Param("createTime") LocalDateTime createTime);

@@ -2,10 +2,9 @@ server:
   port: 9050
 spring:
   datasource:
-    url: jdbc:dm://192.168.1.8:5236/practice?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&useSSL=false
+    url: jdbc:dm://192.168.1.8:5236/PSC?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&useSSL=false
     driver-class-name: dm.jdbc.driver.DmDriver
-    dialect: org.hibernate.dialect.DmDialect
-    username: sysdba
+    username: PSC
     password: 123456789
     max-active: 1000
     test-on-borrow: true

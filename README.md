@@ -60,3 +60,13 @@ updateById()更新时间自动修改：@TableField(update = "now()")
 mvn install:install-file -DgroupId=com.dm -DartifactId=DmJdbcDriver18 -Dversion=1.8 -Dpackaging=jar -Dfile=./s/DmJdbcDriver18.jar
 ```
 * 无效方案[达梦数据库8 jdbc](https://gitee.com/fuile/dameng/blob/master/repository-%E8%BE%BE%E6%A2%A68maven.zip)
+
+## 注意事项
+* 表名大写，字段大写
+* 1个账号下只有1个模式
+
+## 命令
+```
+select * from SYS.ALL_OBJECTS where ALL_OBJECTS.OWNER='PSC' AND OBJECT_TYPE='SCH'; // 查PSC账号下的模式/库
+
+```

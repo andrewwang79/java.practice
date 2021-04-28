@@ -1,35 +1,35 @@
-DROP TABLE IF EXISTS `practice`.`user`;
+DROP TABLE IF EXISTS "PSC"."USER";
 
-CREATE TABLE `practice`.`user`
+CREATE TABLE "PSC"."USER"
 (
-    `id` NUMBER NOT NULL,
-    `name` NVARCHAR(32) NOT NULL,
-    `password` NVARCHAR(16) NOT NULL,
-    `phone` NVARCHAR(11) NOT NULL,
-    `create_time` TIMESTAMP(0) NOT NULL,
-    `update_time` TIMESTAMP(0) NOT NULL,
-    `deleted` TINYINT NOT NULL,
-    CONSTRAINT `PK_USER` NOT CLUSTER PRIMARY KEY(`id`)
+    "ID" NUMBER NOT NULL,
+    "NAME" NVARCHAR(32) NOT NULL,
+    "PASSWORD" NVARCHAR(16) NOT NULL,
+    "PHONE" NVARCHAR(11) NOT NULL,
+    "CREATE_TIME" TIMESTAMP(0) NOT NULL,
+    "UPDATE_TIME" TIMESTAMP(0) NOT NULL,
+    "DELETED" TINYINT NOT NULL,
+    CONSTRAINT "PK_USER" NOT CLUSTER PRIMARY KEY("ID")
 );
 
-INSERT INTO `practice`.`user` (`id`, `name`, `password`, `phone`, `create_time`, `update_time`, `deleted`) VALUES (1, 'zhangsan', '123456', '13912345678', now(), now(), 0);
-INSERT INTO `practice`.`user` (`id`, `name`, `password`, `phone`, `create_time`, `update_time`, `deleted`) VALUES (2, 'lisi', '123456', '13912345678', now(), now(), 0);
+INSERT INTO "PSC"."USER" ("ID", "NAME", "PASSWORD", "PHONE", "CREATE_TIME", "UPDATE_TIME", "DELETED") VALUES (1, 'zhangsan', '123456', '13912345678', now(), now(), 0);
+INSERT INTO "PSC"."USER" ("ID", "NAME", "PASSWORD", "PHONE", "CREATE_TIME", "UPDATE_TIME", "DELETED") VALUES (2, 'lisi', '123456', '13912345678', now(), now(), 0);
 
 
-DROP TABLE IF EXISTS `practice`.`cat`;
+DROP TABLE IF EXISTS "PSC"."CAT";
 
-CREATE TABLE `practice`.`cat`
+CREATE TABLE "PSC"."CAT"
 (
-    `id` NUMBER NOT NULL,
-    `user_id` NUMBER NOT NULL,
-    `name` NVARCHAR(32) NOT NULL,
-    `create_time` TIMESTAMP(0) NOT NULL,
-    `update_time` TIMESTAMP(0) NOT NULL,
-    `deleted` TINYINT NOT NULL,
-    CONSTRAINT `PK_CAT` NOT CLUSTER PRIMARY KEY(`id`)
+    "ID" NUMBER NOT NULL,
+    "user_id" NUMBER NOT NULL,
+    "NAME" NVARCHAR(32) NOT NULL,
+    "CREATE_TIME" TIMESTAMP(0) NOT NULL,
+    "UPDATE_TIME" TIMESTAMP(0) NOT NULL,
+    "DELETED" TINYINT NOT NULL,
+    CONSTRAINT "PK_CAT" NOT CLUSTER PRIMARY KEY("ID")
 );
 
-INSERT INTO `practice`.`cat` (`id`, `user_id`, `name`, `create_time`, `update_time`, `deleted`) VALUES (1, 2, 'zs1', now(), now(), 0);
-INSERT INTO `practice`.`cat` (`id`, `user_id`, `name`, `create_time`, `update_time`, `deleted`) VALUES (2, 1, 'zs2', now(), now(), 0);
-INSERT INTO `practice`.`cat` (`id`, `user_id`, `name`, `create_time`, `update_time`, `deleted`) VALUES (3, 2, 'zs1', now(), now(), 0);
-INSERT INTO `practice`.`cat` (`id`, `user_id`, `name`, `create_time`, `update_time`, `deleted`) VALUES (4, 2, 'ls2', now(), now(), 0);
+INSERT INTO "PSC"."CAT" ("ID", "user_id", "NAME", "CREATE_TIME", "UPDATE_TIME", "DELETED") VALUES (1, 2, 'zs1', now(), now(), 0);
+INSERT INTO "PSC"."CAT" ("ID", "user_id", "NAME", "CREATE_TIME", "UPDATE_TIME", "DELETED") VALUES (2, 1, 'zs2', now(), now(), 0);
+INSERT INTO "PSC"."CAT" ("ID", "user_id", "NAME", "CREATE_TIME", "UPDATE_TIME", "DELETED") VALUES (3, 2, 'zs1', now(), now(), 0);
+INSERT INTO "PSC"."CAT" ("ID", "user_id", "NAME", "CREATE_TIME", "UPDATE_TIME", "DELETED") VALUES (4, 2, 'ls2', now(), now(), 0);

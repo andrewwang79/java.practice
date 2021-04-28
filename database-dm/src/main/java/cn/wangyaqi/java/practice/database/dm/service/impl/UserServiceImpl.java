@@ -31,10 +31,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
   @Resource
   private UserMapper mapper;
 
-  public List<User> findAllt() {
-    return mapper.findAllt();
-  }
-
   public List<User> findAllByName(String name) {
     return lambdaQuery().eq(User::getName, name).list();
   }

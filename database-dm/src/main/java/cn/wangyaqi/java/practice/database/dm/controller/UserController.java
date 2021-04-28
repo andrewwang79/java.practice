@@ -25,13 +25,6 @@ public class UserController {
   // INSERT : userService.save()
 
   // ALL
-  // http://127.0.0.1:9050/user/allt
-  @RequestMapping("/allt")
-  public Object allt() {
-    return userService.findAllt();
-  }
-
-  // ALL
   // http://127.0.0.1:9050/user/all
   @RequestMapping("/all")
   public Object all() {

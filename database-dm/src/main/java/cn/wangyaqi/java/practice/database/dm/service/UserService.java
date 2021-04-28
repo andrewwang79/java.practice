@@ -20,8 +20,6 @@ import java.util.List;
  */
 public interface UserService extends IService<User> {
 
-  List<User> findAllt();
-
   List<User> findAllByName(String name);
 
   List<User> findAllByName_mapper(String name);

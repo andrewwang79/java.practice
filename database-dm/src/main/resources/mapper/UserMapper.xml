@@ -4,42 +4,39 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="cn.wangyaqi.java.practice.database.dm.entity.User">
-        <id column="id" property="id" />
-        <result column="name" property="name" />
-        <result column="password" property="password" />
-        <result column="phone" property="phone" />
-        <result column="create_time" property="createTime" />
-        <result column="update_time" property="updateTime" />
-        <result column="deleted" property="deleted" />
+        <id column="ID" property="id" />
+        <result column="NAME" property="name" />
+        <result column="PASSWORD" property="password" />
+        <result column="PHONE" property="phone" />
+        <result column="CREATE_TIME" property="createTime" />
+        <result column="UPDATE_TIME" property="updateTime" />
+        <result column="DELETED" property="deleted" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, name, password, phone, create_time, update_time, deleted
+        ID, NAME, PASSWORD, PHONE, CREATE_TIME, UPDATE_TIME, DELETED
     </sql>
-    <select id="findAllt" resultMap="BaseResultMap">
-    select "id","name","password","phone","create_time","update_time","deleted" from "practice"."user";
-    </select>
 
     <select id="findAllByName" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from user
+        from USER
         where
-        name = #{name,jdbcType=VARCHAR}
+        NAME = #{name,jdbcType=VARCHAR}
     </select>
 
     <select id="selectUserBriefPage" resultType="cn.wangyaqi.java.practice.database.dm.vo.UserBrief">
-        SELECT id,name,create_time FROM user WHERE name=#{name}
+        SELECT ID,NAME,CREATE_TIME FROM USER WHERE NAME=#{name}
     </select>
 
     <select id="selectCatDetailPageSql" resultType="cn.wangyaqi.java.practice.database.dm.vo.CatDetail">
-        SELECT c.*, u.name AS userName FROM user as u LEFT JOIN cat as c on u.id=c.user_id
+        SELECT c.*, u.NAME AS userName FROM USER as u LEFT JOIN CAT as c on u.ID=c.USER_ID
         <where>
             <if test="userName != null and userName != ''">
-                AND u.name = #{userName}
+                AND u.NAME = #{userName}
             </if>
-            AND c.create_time > #{createTime}
+            AND c.CREATE_TIME > #{createTime}
         </where>
     </select>
 </mapper>
