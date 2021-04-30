@@ -5,10 +5,10 @@
 | 目录 | 说明 |
 | :-: | - |
 | misc | 杂项集合 |
+| autotest | 自动化测试：接口集成测试；接口单元测试，函数单元测试 |
 | database-mp | MySQL+MP，多租户 |
 | database-jpa | MySQL+JPA，无租户 |
 | database-dm | 达梦数据库8+MP+东方通7，无租户 |
-| autotest | 自动化测试：接口单元测试，接口集成测试 |
 
 # misc
 ## Actuator
@@ -17,6 +17,16 @@
 ## Swagger
 * https://juejin.cn/post/6844903991793418248
 * http://localhost:8080/swagger-ui/index.html
+
+# autotest
+* https://java.wangyaqi.cn/#/material/ut
+
+## junit5
+* https://www.baeldung.com/junit-assertions
+
+## spring
+* https://www.codehome.vip/archives/springboot-test
+* https://blinkfox.github.io/2019/03/02/hou-duan/spring/springboot2.x-dan-yuan-ce-shi/
 
 # database-mp
 ## 资料
@@ -30,8 +40,11 @@
 
 ## 代码生成文件
 * [自定义代码生成器【推荐】](https://gitee.com/qiya365/longquan/code.generator) : 参数详见jar包里的示例，[资料1](https://mp.baomidou.com/guide/generator.html), [资料2](https://juejin.cn/post/6844904190683119629)
-* [插件代码生成器](https://mp.baomidou.com/guide/mybatisx-idea-plugin.html) ，生成代码
-![](./s/codegenerator.png)
+* [插件代码生成器](https://mp.baomidou.com/guide/mybatisx-idea-plugin.html) ， ![](./s/database-mp/codegenerator.png)
+![](./s/database-mp/codegenerator.png)
+* 模板使用和开发
+    * 模板文件：![](./s/database-mp/tpl.png)
+    * 启用方法：templateConfig.setController("templates/controller.java.vm");
 
 ## 代码生成SQL函数
 * https://mp.baomidou.com/guide/mybatisx-idea-plugin.html，生成查询等
@@ -55,7 +68,7 @@ updateById()更新时间自动修改：@TableField(update = "now()")
 ### 达梦数据库8连接
 * 有效方案：https://my.oschina.net/jeecg/blog/4302268
 ```
-mvn install:install-file -DgroupId=com.dm -DartifactId=DmJdbcDriver18 -Dversion=1.8 -Dpackaging=jar -Dfile=./s/DmJdbcDriver18.jar
+mvn install:install-file -DgroupId=com.dm -DartifactId=DmJdbcDriver18 -Dversion=1.8 -Dpackaging=jar -Dfile=./s/database-dm/DmJdbcDriver18.jar
 ```
 * 无效方案[达梦数据库8 jdbc](https://gitee.com/fuile/dameng/blob/master/repository-%E8%BE%BE%E6%A2%A68maven.zip)
 
