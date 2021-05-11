@@ -9,6 +9,7 @@
 | database-mp | MySQL+MP，多租户 |
 | database-jpa | MySQL+JPA，无租户 |
 | database-dm | 达梦数据库8+MP+东方通7，无租户 |
+| wartest | war包打包和测试，基于Tomcat8 |
 
 # misc
 ## Actuator
@@ -81,3 +82,8 @@ mvn install:install-file -DgroupId=com.dm -DartifactId=DmJdbcDriver18 -Dversion=
 select * from SYS.ALL_OBJECTS where ALL_OBJECTS.OWNER='PSC' AND OBJECT_TYPE='SCH'; // 查PSC账号下的模式/库
 
 ```
+
+# wartest
+1. 打包：mvn package
+1. API：war包放到webapps/
+1. html：html文件放到webapps/ROOT/
