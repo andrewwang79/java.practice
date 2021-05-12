@@ -84,6 +84,34 @@ select * from SYS.ALL_OBJECTS where ALL_OBJECTS.OWNER='PSC' AND OBJECT_TYPE='SCH
 ```
 
 # wartest
+## 代码
+```
+pom.xml新增内容:
+  <packaging>war</packaging>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-tomcat</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+  <build>
+    <finalName>api</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+
+新增类：MySpringBootServletInitializer
+```
+
+## 打包部署
 1. 打包：mvn package
-1. API：war包放到webapps/
-1. html：html文件放到webapps/ROOT/
+1. 部署        
+| 项 | 说明 | Tomcat | 东方通 |
+| :-: | - | - | - |
+| API | http://domain/war包名/ | war包放到webapps/ROOT/ | war包上传 |
+| Html  | http://domain/ | 文件放到webapps/ROOT/ | 选择目录(有index.html等)内的所有文件压缩，压缩文件后缀改成war，上传war包 |
