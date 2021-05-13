@@ -84,7 +84,7 @@ select * from SYS.ALL_OBJECTS where ALL_OBJECTS.OWNER='PSC' AND OBJECT_TYPE='SCH
 ```
 
 # wartest
-## 代码
+## 代码调整
 ```
 pom.xml新增内容:
   <packaging>war</packaging>
@@ -108,9 +108,11 @@ pom.xml新增内容:
 新增类：MySpringBootServletInitializer
 ```
 
-## 打包部署
-1. 打包：mvn package
-1. 部署        
+## 打包
+mvn package
+
+## 部署
+
 | 项 | 说明 | Tomcat | 东方通 |
 | :-: | - | - | - |
 | API | http://domain/war包名/ | war包放到webapps/ROOT/ | war包上传 |
