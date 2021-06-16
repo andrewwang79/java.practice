@@ -1,10 +1,12 @@
 # Java最佳实践
+* [最佳实践](https://github.com/andrewwang79/java.practice)
+* [Java技术](https://java.wangyaqi.cn/)
 
 # 目录说明
 
 | 目录 | 说明 |
 | :-: | - |
-| misc | 杂项集合 |
+| misc | 杂项：Actuator，Swagger |
 | autotest | 自动化测试：接口集成测试；接口单元测试，函数单元测试 |
 | database-mp | MySQL+MP，多租户 |
 | database-jpa | MySQL+JPA，无租户 |
@@ -112,7 +114,6 @@ pom.xml新增内容:
 mvn package
 
 ## 部署
-
 | 项 | 说明 | Tomcat | 东方通 |
 | :-: | - | - | - |
 | API | http://domain/war包名/ | war包放到webapps/ROOT/ | war包上传 |
